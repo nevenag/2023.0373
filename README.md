@@ -9,7 +9,7 @@ The software and data in this repository are a snapshot of the software and data
 that were used in the research reported on in the paper 
 [Sempervirens: A Fast Reconstruction Algorithm for Noisy and Incomplete Matrix Representations of Trees](https://doi.org/10.1287/ijoc.2019.0000). 
 The snapshot is based on 
-[this SHA](https://github.com/nevenag/sempervirens/commit/2a39b2b23d94ffbbfad3f38fa68eb05a0d43ddb4) 
+[this SHA](https://github.com/nevenag/sempervirens/commit/825cd71d70fcd864c4976160e4d9fc00b2e45e6b)
 in the development repository. 
 
 **Important: This code is being developed on an on-going basis at
@@ -51,19 +51,21 @@ Below is the BibTex for citing this snapshot of the repository.
 
 ## Quick Start <a name="QS"></a>
 
-Assuming python and dependencies are present you can run:
+Assuming Python and dependencies are present you can run:
 
 ```bash
 git clone git@github.com:nevenag/sempervirens.git
 cd sempervirens
-python reconstructor.py ../data/noisy_data.SC 0.001 0.2 0.05 -o reconstructed_data.SC.CFMatrix
+python sempervirens/reconstructor.py sample_data/noisy_data.SC 0.001 0.2 0.05 -o reconstructed_data.SC.CFMatrix
 ```
+
+The file `reconstructor.py` is a standalone implementation; the file can be moved to wherever necessary.
 
 ## Installation <a name="Installation"></a>
 
 Sempervirens requires Python and only two Python packages: NumPy and Pandas. Pandas can be omitted if only using Sempervirens as a library.
 
-Python and dependencies can by installed as follows:
+Python dependencies can be installed as follows:
 
 ```bash
 brew install python@3.10
@@ -78,16 +80,16 @@ All code has been tested with Python 3.10.
 
 ## Commandline Usage <a name="CLI"></a>
 
-The following reconstructs the noisy matrix in `noisy_matrix_filename` given false positive rate `fpr`, false negative rate `fnr`, and missing entry rate `mer`. The reconstructed matrix is written to `noisy_matrix_filename.CFMatrix`.
+The following reconstructs the noisy matrix in `noisy_matrix_filename` given false positive probability `fpp`, false negative probability `fnp`, and missing entry probability `mep`. The reconstructed matrix is written to `noisy_matrix_filename.CFMatrix`.
 
 ```bash
-python reconstructor.py noisy_matrix_filename fpr fnr mer
+python reconstructor.py noisy_matrix_filename fpp fnp mep
 ```
 
 The output file can be specified with the optional `-o` flag:
 
 ```bash
-python reconstructor.py noisy_matrix_filename fpr fnr mer -o output_filename
+python reconstructor.py noisy_matrix_filename fpp fnp mep -o output_filename
 ```
 
 Help information can be found by running `python reconstructor.py --help`.
@@ -100,7 +102,7 @@ Example usage is as follows.
 ```python
 from reconstructor import reconstruct
 ...
-reconstruction = reconstruct(noisy_mat, fpr, fnr, mer)
+reconstruction = reconstruct(noisy_mat, fpp, fnp, mep)
 ...
 ```
 
@@ -108,7 +110,7 @@ An example of using Pandas to read and write matrices of files can be seen at th
 
 ## Input/Output Format <a name="IOFormat"></a>
 
-The input and output to the `reconstruct` function is a NumPy matrix with `n` rows and `m` columns. This describes `n` objects in terms of `m` characters. Element `(i, j)` of the matrix can be either `0`, `1`, or `3`. If it is `0`, then object `i` does not have character `j`. If it is `1`, then object `i` has character `j`. If it is `3`, then it is unknown whether object `i` has character `j` (the output of `reconstruct` will not have any `3`s).
+The input and output to the `reconstruct` function is a NumPy matrix with `n` rows and `m` columns. This describes `n` objects in terms of `m` characters (for example, cells in terms of mutations). Element `(i, j)` of the matrix can be either `0`, `1`, or `3`. If it is `0`, then object `i` does not have character `j`. If it is `1`, then object `i` has character `j`. If it is `3`, then it is unknown whether object `i` has character `j` (the output of `reconstruct` will not have any `3`s).
 
 Below is an example file used for input. The input file must be a tab separated value (TSV) file. The first row and column of the file are used as labels of the rows and columns respectively. The rest of the TSV must represent a matrix with the format described above. The output file will be of the same format as the input file, reusing the input file's row and column labels.
 
