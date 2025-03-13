@@ -1,13 +1,13 @@
 [![INFORMS Journal on Computing Logo](https://INFORMSJoC.github.io/logos/INFORMS_Journal_on_Computing_Header.jpg)](https://pubsonline.informs.org/journal/ijoc)
 
-# Sempervirens: A Fast Reconstruction Algorithm for Noisy and Incomplete Matrix Representations of Trees
+# Sempervirens: A Fast Reconstruction Algorithm for Noisy and Incomplete Binary Matrix Representations of Trees
 
 This archive is distributed in association with the [INFORMS Journal on
 Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
 
 The software and data in this repository are a snapshot of the software and data
 that were used in the research reported on in the paper 
-[Sempervirens: A Fast Reconstruction Algorithm for Noisy and Incomplete Matrix Representations of Trees](https://doi.org/10.1287/ijoc.2019.0000). 
+[Sempervirens: A Fast Reconstruction Algorithm for Noisy and Incomplete Binary Matrix Representations of Trees](https://doi.org/10.1287/ijoc.2019.0000). 
 The snapshot is based on 
 [this SHA](https://github.com/nevenag/sempervirens/commit/825cd71d70fcd864c4976160e4d9fc00b2e45e6b)
 in the development repository. 
@@ -30,7 +30,7 @@ Below is the BibTex for citing this snapshot of the repository.
 @misc{Sempervirens
   author =        {N. Junnarkar, C. Kizilkale, N. Golubovic, M. Arcak, A. Buluc},
   publisher =     {INFORMS Journal on Computing},
-  title =         {{Sempervirens: A Fast Reconstruction Algorithm for Noisy and Incomplete Matrix Representations of Treest}},
+  title =         {{Sempervirens: A Fast Reconstruction Algorithm for Noisy and Incomplete Binary Matrix Representations of Trees}},
   year =          {2023},
   doi =           {10.1287/ijoc.2023.0373.cd},
   url =           {https://github.com/INFORMSJoC/2023.0373},
